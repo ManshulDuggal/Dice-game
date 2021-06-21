@@ -1,0 +1,81 @@
+* {
+  padding: 0px;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.wrapper {
+  padding: 4rem 6rem;
+  box-shadow: 0 0 10px 10px rgba(198, 24, 24, 0.523);
+  display: flex;
+  justify-content: space-between;
+  min-height: 90vh;
+
+  width: 90%;
+  margin: 1rem auto;
+  align-content: center;
+  background-color: rgba(255, 255, 255, 0.146);
+}
+
+.playername {
+  font-size: 0.7rem;
+  padding: 5rem;
+  box-shadow: 0px 0px 25px green;
+  font-weight: bolder;
+}
+
+.score {
+  margin-top: 1vh;
+  font-size: 1rem;
+}
+
+button {
+  position: relative;
+
+  margin: 0.2rem;
+  font-size: 0.6rem;
+  height: 3rem;
+  width: 4rem;
+  background: rgba(255, 255, 255, 0.598);
+  border: solid 2px green;
+  border-radius: 20%;
+}
+.button-container {
+  display: flex;
+  position: absolute;
+  top: 75%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+}
+
+#player-2 {
+  width: 25%;
+}
+#player-1 {
+  width: 25%;
+}
+
+.image-dice {
+  width: 10%;
+  position: absolute;
+  top: 20%;
+  left: 45%;
+  transition: all 0.4 ease-in-out;
+}
+
+.image-wrapper {
+  width: 2%;
+}
+
+.active::after {
+  content: "active";
+}
+
+.my-svg {
+  width: 50%;
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  z-index: -2;
+}

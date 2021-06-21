@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="playername" id="player-0">
+        Manshul
+        <!--<div class="active-0"></div> -->
+        <div class="score" id="score-0">41</div>
+        <div>
+          <div class="score" id="RoundScore-0">0</div>
+        </div>
+      </div>
+
+      <div class="playername" id="player-1">
+        Pepe
+        <!--<div class="active-1"></div> -->
+        <div class="score" id="score-1">0</div>
+        <div>
+          <div class="score" id="RoundScore-1">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="button-container">
+        <div class="try" id="button-dice">
+          <button>Play</button>
+        </div>
+
+        <div class="try" id="Hold-dice">
+          <button>Hold</button>
+        </div>
+      </div>
+      <div class="image-wrapper">
+        <img src="./images/1.png" class="image-dice" />
+      </div>
+
+      <div class="my-svg">
+        <img src="/images/game-on.png" alt="" />
+      </div>
+    </div>
+
+    <script>
+      var playeractive, roundscore;
+      roundscore = 0;
+      playeractive = 1;
+
+      //document.querySelector('#score-' + playeractive).innerHTML = " <strong> " +dice ;
+
+      document.querySelector(".image-dice").style.display = "none";
+      document.querySelector("#score-1").textContent = 0;
+      document.querySelector("#score-0").textContent = 0;
+      document.querySelector("#RoundScore-1").textContent = 0;
+      document.querySelector("#RoundScore-0").textContent = 0;
+      document.querySelector(".my-svg").style.display = "none";
+
+      //event hamdelers
+      document
+        .querySelector("#button-dice")
+        .addEventListener("click", function () {
+          var dice = Math.floor(Math.random() * 6) + 1;
+          var DiceSelect = document.querySelector(".image-dice");
+
+          DiceSelect.style.display = "block";
+          DiceSelect.src = "./images/" + dice + ".png";
+          document.querySelector("#score-" + playeractive).innerHTML =
+            " <strong> " + dice;
+
+          if (dice !== 1) {
+            roundscore += dice;
+            document.querySelector("#RoundScore-" + playeractive).textContent =
+              roundscore;
+          } else {
+            document.querySelector("#RoundScore-" + playeractive).innerHTML = 0;
+            document.querySelector("#score-" + playeractive).innerHTML = 0;
+            roundscore = 0;
+            playeractive === 0 ? (playeractive = 1) : (playeractive = 0);
+
+            roundscore = 0;
+
+            alert(
+              "opps you got one so now you will have to start over, Its the other players turn now"
+            );
+
+            document
+              .querySelector("#player-" + playeractive)
+              .classList.toggle("active");
+
+            // if (playeractive !== 1) {
+            //     playeractive = 1;
+
+            // } else {
+            //     playeractive = 0;
+
+            // }
+          }
+        });
+
+      document
+        .querySelector("#Hold-dice")
+        .addEventListener("click", function () {
+          alert("player changed").classList.toggle("active");
+          playeractive === 0 ? (playeractive = 1) : (playeractive = 0);
+        });
+
+      //     return {
+
+      // init: function () {
+      //   console.log("application started.");
+      //              };
+    </script>
+  </body>
+</html>
